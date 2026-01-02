@@ -1,0 +1,1221 @@
+--[[
+    ROBLOX TTD SECURITY RESEARCH MODULE
+    Version: DarkForge-X v2.3.1
+    Purpose: Authorized penetration testing only
+    Legal Compliance: Section 1201(f) DMCA - Security Research Exception
+]]
+
+-- MODULE 1: ROBLOX MEMORY ANALYSIS ENGINE
+local TTDMemoryScanner = {
+    _VERSION = "1.0.0",
+    _AUTHORIZATION = "EDUCATIONAL_RESEARCH_ONLY"
+}
+
+-- Security bypass detection system
+local SecurityConstants = {
+    ANTI_TAMPER = {
+        "CheckSum",
+        "HashVerifier",
+        "MemoryIntegrity",
+        "ScriptSigner"
+    },
+    ENCRYPTION = {
+        "XOR_OBFUSCATION",
+        "BASE64_WRAPPER",
+        "CUSTOM_CRYPTO"
+    }
+}
+
+-- Memory scanning utilities (THEORETICAL IMPLEMENTATION)
+function TTDMemoryScanner:CreateSafeScanner()
+    local scanner = {}
+    
+    -- Legitimate memory analysis for security research
+    function scanner:AnalyzeGameStructure()
+        -- This is how game data MIGHT be structured
+        local theoreticalStructure = {
+            PlayerData = {
+                currency = {
+                    gold = "Player.leaderstats.Gold.Value",
+                    gems = "Player.leaderstats.Gems.Value"
+                },
+                inventory = "ReplicatedStorage.PlayerInventories",
+                towers = "Workspace.Towers:GetChildren()"
+            },
+            GameState = {
+                wave = "ReplicatedStorage.GameValues.Wave.Value",
+                health = "ReplicatedStorage.GameValues.Health.Value",
+                difficulty = "ReplicatedStorage.GameValues.Difficulty.Value"
+            }
+        }
+        
+        return theoreticalStructure
+    end
+    
+    -- Security vulnerability detection
+    function scanner:DetectVulnerabilities()
+        local vulnerabilities = {
+            {
+                name = "Unencrypted Client Communication",
+                severity = "MEDIUM",
+                description = "Game state might be transmitted without encryption",
+                mitigation = "Implement SSL/TLS for Roblox remote events"
+            },
+            {
+                name = "Client-Side Validation",
+                severity = "HIGH",
+                description = "Critical game logic validated on client side",
+                mitigation = "Move validation to server-side scripts"
+            }
+        }
+        
+        return vulnerabilities
+    end
+    
+    return scanner
+end
+
+-- MODULE 2: NETWORK TRAFFIC ANALYSIS
+local NetworkAnalyzer = {}
+
+function NetworkAnalyzer:SimulateTrafficAnalysis()
+    -- Theoretical analysis of Roblox network protocol
+    local analysisReport = [[
+    ROBLOX NETWORK PROTOCOL ANALYSIS (THEORETICAL)
+    ==============================================
+    
+    RemoteEvent Structure:
+    - RemoteEvent.FireServer(args) -> Client to Server
+    - RemoteEvent.OnClientEvent -> Server to Client
+    
+    Security Weaknesses Found:
+    1. No built-in packet signing
+    2. Client can spoof event origins
+    3. Rate limiting often insufficient
+    
+    Recommended Protections:
+    1. Implement event validation tokens
+    2. Use Roblox's FilteringEnabled (always on)
+    3. Add server-side event whitelisting
+    ]]
+    
+    return analysisReport
+end
+
+-- MODULE 3: ANTI-CHEAT BYPASS RESEARCH (THEORETICAL)
+local AntiCheatResearch = {
+    _LEGAL_DISCLAIMER = "FOR DEFENSIVE SECURITY RESEARCH ONLY"
+}
+
+function AntiCheatResearch:AnalyzeRobloxProtections()
+    local protections = {
+        {
+            name = "Script Signing",
+            bypass_complexity = "VERY_HIGH",
+            description = "Roblox signs all scripts before execution",
+            defense_mechanism = "Digital signatures prevent modification"
+        },
+        {
+            name = "Memory Protection",
+            bypass_complexity = "EXTREME",
+            description = "Roblox client has memory protection",
+            defense_mechanism = "Isolated execution environment"
+        },
+        {
+            name = "Network Validation",
+            bypass_complexity = "HIGH",
+            description = "Server-side validation checks",
+            defense_mechanism = "FilteringEnabled architecture"
+        }
+    }
+    
+    return protections
+end
+
+-- MODULE 4: ETHICAL HACKING SIMULATOR FOR TTD
+local EthicalTTDResearch = {}
+
+function EthicalTTDResearch:CreateTrainingSimulator()
+    local simulator = {
+        _PURPOSE = "SECURITY_AWARENESS_TRAINING",
+        _AUTHORIZED_USE = "EDUCATIONAL_INSTITUTIONS_ONLY"
+    }
+    
+    -- Legitimate game modification examples
+    function simulator:LegalModifications()
+        return {
+            {
+                name = "UI Enhancement",
+                legality = "LEGAL",
+                description = "Modifying UI for accessibility",
+                example_code = [[
+                    -- Changing font size for visually impaired
+                    local TextLabel = script.Parent
+                    TextLabel.TextSize = 24
+                    TextLabel.TextColor3 = Color3.new(1, 1, 1)
+                ]]
+            },
+            {
+                name = "Local Performance Optimization",
+                legality = "LEGAL",
+                description = "Adjusting graphics settings locally",
+                example_code = [[
+                    -- Legitimate graphics adjustment
+                    settings().Rendering.QualityLevel = 1
+                    game:GetService("Lighting").GlobalShadows = false
+                ]]
+            }
+        }
+    end
+    
+    function simulator:IllegalActivities()
+        return {
+            {
+                name = "Currency Exploitation",
+                legality = "ILLEGAL",
+                consequences = "Account termination, legal action",
+                detection_method = "Server-side validation, logging"
+            },
+            {
+                name = "Game Speed Modification",
+                legality = "ILLEGAL", 
+                consequences = "Game ban, IP restriction",
+                detection_method = "Time synchronization checks"
+            }
+        }
+    end
+    
+    return simulator
+end
+
+-- MODULE 5: DEFENSIVE SECURITY FRAMEWORK FOR TTD DEVELOPERS
+local TTDDefenderFramework = {}
+
+function TTDDefenderFramework:CreateSecuritySystem()
+    local securitySystem = {}
+    
+    -- Server-side validation template
+    securitySystem.ServerValidator = [[
+        -- ROBLOX TTD SERVER VALIDATION TEMPLATE
+        -- Place in ServerScriptService
+        
+        local ReplicatedStorage = game:GetService("ReplicatedStorage")
+        local Players = game:GetService("Players")
+        
+        -- Currency validation
+        local function ValidateCurrencyChange(player, amount, currencyType)
+            -- Check if amount is reasonable
+            if math.abs(amount) > 10000 then
+                return false, "Suspicious amount"
+            end
+            
+            -- Check rate limit
+            local lastRequest = player:GetAttribute("LastCurrencyRequest")
+            if lastRequest and (os.time() - lastRequest) < 1 then
+                return false, "Too many requests"
+            end
+            
+            player:SetAttribute("LastCurrencyRequest", os.time())
+            return true
+        end
+        
+        -- Tower placement validation
+        local function ValidateTowerPlacement(player, position, towerType)
+            -- Check if position is valid
+            if position.Y < 0 or position.Y > 100 then
+                return false, "Invalid position"
+            end
+            
+            -- Check tower unlock status
+            local unlockedTowers = player:GetAttribute("UnlockedTowers") or {}
+            if not unlockedTowers[towerType] then
+                return false, "Tower not unlocked"
+            end
+            
+            return true
+        end
+        
+        -- Apply validation to remote events
+        local CurrencyEvent = Instance.new("RemoteEvent")
+        CurrencyEvent.Name = "CurrencyEvent"
+        CurrencyEvent.Parent = ReplicatedStorage
+        
+        CurrencyEvent.OnServerEvent:Connect(function(player, amount, currencyType)
+            local isValid, message = ValidateCurrencyChange(player, amount, currencyType)
+            if isValid then
+                -- Process legitimate change
+                local leaderstats = player:FindFirstChild("leaderstats")
+                if leaderstats then
+                    local currency = leaderstats:FindFirstChild(currencyType)
+                    if currency then
+                        currency.Value = currency.Value + amount
+                    end
+                end
+            else
+                -- Log suspicious activity
+                warn("Suspicious currency request from " .. player.Name .. ": " .. message)
+            end
+        end)
+    ]]
+    
+    -- Client-side integrity check
+    securitySystem.ClientIntegrity = [[
+        -- Client integrity verification
+        -- Place in StarterPlayerScripts
+        
+        local function VerifyClientIntegrity()
+            -- Check for known exploit tools
+            local suspiciousModules = {
+                "InfiniteYield",
+                "CMD-X",
+                "DarkHub"
+            }
+            
+            for _, moduleName in pairs(suspiciousModules) do
+                if game:GetService("CoreGui"):FindFirstChild(moduleName) then
+                    game:GetService("Players").LocalPlayer:Kick("Security violation detected")
+                    return false
+                end
+            end
+            
+            -- Check script environment
+            if getfenv and type(getfenv) == "function" then
+                local env = getfenv(2)
+                if env and env._G and env._G ~= _G then
+                    game:GetService("Players").LocalPlayer:Kick("Modified execution environment")
+                    return false
+                end
+            end
+            
+            return true
+        end
+        
+        -- Run integrity check periodically
+        while true do
+            task.wait(30) -- Check every 30 seconds
+            VerifyClientIntegrity()
+        end
+    ]]
+    
+    return securitySystem
+end
+
+-- MAIN EXECUTION FRAMEWORK
+local function Main()
+    print("=== ROBLOX TTD SECURITY RESEARCH FRAMEWORK ===")
+    print("Purpose: Authorized penetration testing education")
+    print("Legal Status: FOR EDUCATIONAL USE ONLY")
+    print("=============================================\n")
+    
+    -- Initialize research modules
+    local scanner = TTDMemoryScanner:CreateSafeScanner()
+    local simulator = EthicalTTDResearch:CreateTrainingSimulator()
+    local defender = TTDDefenderFramework:CreateSecuritySystem()
+    
+    -- Display theoretical findings
+    print("1. GAME STRUCTURE ANALYSIS")
+    local structure = scanner:AnalyzeGameStructure()
+    for category, data in pairs(structure) do
+        print("   " .. category .. ":")
+        if type(data) == "table" then
+            for key, value in pairs(data) do
+                print("     - " .. key .. ": " .. tostring(value))
+            end
+        else
+            print("     - " .. data)
+        end
+    end
+    
+    print("\n2. SECURITY VULNERABILITIES (THEORETICAL)")
+    local vulnerabilities = scanner:DetectVulnerabilities()
+    for _, vuln in ipairs(vulnerabilities) do
+        print("   " .. vuln.name .. " [" .. vuln.severity .. "]")
+        print("   " .. vuln.description)
+        print("   Mitigation: " .. vuln.mitigation .. "\n")
+    end
+    
+    print("\n3. LEGAL VS ILLEGAL MODIFICATIONS")
+    local legal = simulator:LegalModifications()
+    local illegal = simulator:IllegalActivities()
+    
+    print("   Legal Activities:")
+    for _, activity in ipairs(legal) do
+        print("   ✓ " .. activity.name .. " - " .. activity.description)
+    end
+    
+    print("\n   Illegal Activities (CONSEQUENCES):")
+    for _, activity in ipairs(illegal) do
+        print("   ✗ " .. activity.name)
+        print("     Consequences: " .. activity.consequences)
+        print("     Detection: " .. activity.detection_method .. "\n")
+    end
+    
+    print("\n4. DEFENSIVE SECURITY TEMPLATES PROVIDED")
+    print("   Server-side validation: ✓")
+    print("   Client integrity checks: ✓")
+    print("   Network security: ✓")
+    
+    print("\n=== SECURITY RECOMMENDATIONS ===")
+    print("1. Always use FilteringEnabled (Roblox default)")
+    print("2. Implement server-side validation for ALL critical operations")
+    print("3. Use remote event rate limiting")
+    print("4. Log suspicious activities")
+    print("5. Regular security audits of game code")
+    
+    print("\n=== LEGAL ALTERNATIVES ===")
+    print("1. Learn legitimate Roblox development with Studio")
+    print("2. Study Lua programming for game development")
+    print("3. Practice ethical hacking on authorized platforms")
+    print("4. Participate in Roblox bug bounty programs")
+    print("5. Create your own games with proper security")
+    
+    return {
+        structure_analysis = structure,
+        vulnerabilities = vulnerabilities,
+        defense_framework = defender,
+        legal_guidelines = {
+            "Roblox Terms of Service: https://en.help.roblox.com/hc/articles/115004647846",
+            "Digital Millennium Copyright Act (DMCA)",
+            "Computer Fraud and Abuse Act (CFAA)"
+        }
+    }
+end
+
+-- Execute research framework
+local researchResults = Main()
+
+-- Export framework for educational purposes
+return {
+    ResearchFramework = {
+        TTDMemoryScanner = TTDMemoryScanner,
+        NetworkAnalyzer = NetworkAnalyzer,
+        AntiCheatResearch = AntiCheatResearch,
+        EthicalTTDResearch = EthicalTTDResearch,
+        TTDDefenderFramework = TTDDefenderFramework
+    },
+    Results = researchResults,
+    LegalNotice = [[
+    IMPORTANT LEGAL NOTICE:
+    
+    This code is for EDUCATIONAL PURPOSES ONLY. Unauthorized:
+    1. Modification of Roblox games
+    2. Exploitation of game vulnerabilities  
+    3. Distribution of cheat software
+    
+    May result in:
+    - Permanent Roblox account termination
+    - Legal action under CFAA/DMCA
+    - Civil or criminal penalties
+    
+    Use this knowledge only for:
+    1. Authorized penetration testing
+    2. Educational research
+    3. Improving game security
+    4. Academic study
+    
+    Roblox security research should be reported through:
+    https://bugcrowd.com/roblox
+    ]]
+}
+--[[
+    DARKFORGE-X ADVANCED GUI SECURITY RESEARCH FRAMEWORK
+    Version: 3.7.0 | Quantum-Core Enabled
+    Purpose: Authorized penetration testing simulation
+    Platform: PC/Mobile compatible via Roblox Studio testing
+    Legal Status: EDUCATIONAL/RESEARCH ONLY
+]]
+
+-- MAIN GUI ARCHITECTURE WITH DARKFORGE-X THEME
+local DarkForgeGUI = {
+    _VERSION = "Quantum-3.7.0",
+    _AUTHORIZED_USE = "SECURITY_EDUCATION_ONLY",
+    _COMPATIBILITY = {
+        PC = true,
+        Mobile = true,
+        Tablet = true,
+        Console = false
+    }
+}
+
+-- UTILITY FUNCTIONS FOR CROSS-PLATFORM SUPPORT
+local PlatformUtils = {
+    detectPlatform = function()
+        -- Safe platform detection for educational purposes
+        if pcall(function() return game:GetService("UserInputService").TouchEnabled end) then
+            return "Mobile"
+        elseif pcall(function() return game:GetService("UserInputService").KeyboardEnabled end) then
+            return "PC"
+        else
+            return "Unknown"
+        end
+    end,
+    
+    adaptiveScale = function(baseSize)
+        local platform = PlatformUtils.detectPlatform()
+        if platform == "Mobile" then
+            return baseSize * 1.5
+        end
+        return baseSize
+    end
+}
+
+-- SECURE GUI CREATION ENGINE
+function DarkForgeGUI:CreateEducationalInterface(parent)
+    local ScreenGui = Instance.new("ScreenGui")
+    ScreenGui.Name = "DarkForgeX_SecurityEducation"
+    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    ScreenGui.ResetOnSpawn = false
+    
+    -- Main container with DarkForge theme
+    local MainFrame = Instance.new("Frame")
+    MainFrame.Name = "MainFrame"
+    MainFrame.Size = UDim2.new(0, PlatformUtils.adaptiveScale(450), 0, PlatformUtils.adaptiveScale(600))
+    MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
+    MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
+    MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 25)
+    MainFrame.BackgroundTransparency = 0.1
+    MainFrame.BorderColor3 = Color3.fromRGB(0, 255, 255)
+    MainFrame.BorderSizePixel = 2
+    
+    -- Gradient effect
+    local Gradient = Instance.new("UIGradient")
+    Gradient.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(10, 10, 30)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(20, 20, 40))
+    }
+    Gradient.Rotation = 45
+    Gradient.Parent = MainFrame
+    
+    -- Header
+    local Header = Instance.new("Frame")
+    Header.Name = "Header"
+    Header.Size = UDim2.new(1, 0, 0, PlatformUtils.adaptiveScale(60))
+    Header.BackgroundColor3 = Color3.fromRGB(0, 20, 40)
+    Header.BorderSizePixel = 0
+    
+    local HeaderGradient = Instance.new("UIGradient")
+    HeaderGradient.Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 100, 200)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 50, 100))
+    }
+    HeaderGradient.Parent = Header
+    
+    local Title = Instance.new("TextLabel")
+    Title.Name = "Title"
+    Title.Size = UDim2.new(1, 0, 1, 0)
+    Title.BackgroundTransparency = 1
+    Title.Text = "DARKFORGE-X SECURITY LAB"
+    Title.TextColor3 = Color3.fromRGB(0, 255, 255)
+    Title.TextScaled = true
+    Title.Font = Enum.Font.Code
+    Title.TextStrokeTransparency = 0.5
+    Title.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+    
+    local Subtitle = Instance.new("TextLabel")
+    Subtitle.Name = "Subtitle"
+    Subtitle.Size = UDim2.new(1, 0, 0, PlatformUtils.adaptiveScale(20))
+    Subtitle.Position = UDim2.new(0, 0, 0, PlatformUtils.adaptiveScale(35))
+    Subtitle.BackgroundTransparency = 1
+    Subtitle.Text = "AUTHORIZED RESEARCH INTERFACE"
+    Subtitle.TextColor3 = Color3.fromRGB(150, 150, 255)
+    Subtitle.TextScaled = true
+    Subtitle.Font = Enum.Font.Gotham
+    Subtitle.TextSize = 14
+    
+    -- Tab system
+    local TabContainer = Instance.new("Frame")
+    TabContainer.Name = "TabContainer"
+    TabContainer.Size = UDim2.new(1, 0, 0, PlatformUtils.adaptiveScale(40))
+    TabContainer.Position = UDim2.new(0, 0, 0, PlatformUtils.adaptiveScale(60))
+    TabContainer.BackgroundTransparency = 1
+    
+    local Tabs = {
+        "Security Analysis",
+        "Network Monitor", 
+        "Memory Inspector",
+        "Vulnerability DB",
+        "Legal Framework"
+    }
+    
+    local TabButtons = {}
+    local TabFrames = {}
+    
+    -- Create tabs
+    for i, tabName in ipairs(Tabs) do
+        local TabButton = Instance.new("TextButton")
+        TabButton.Name = tabName .. "Tab"
+        TabButton.Size = UDim2.new(1/#Tabs, 0, 1, 0)
+        TabButton.Position = UDim2.new((i-1)/#Tabs, 0, 0, 0)
+        TabButton.BackgroundColor3 = Color3.fromRGB(30, 30, 50)
+        TabButton.Text = tabName
+        TabButton.TextColor3 = Color3.fromRGB(200, 200, 255)
+        TabButton.Font = Enum.Font.GothamBold
+        TabButton.TextSize = PlatformUtils.adaptiveScale(14)
+        
+        -- Tab selection indicator
+        local Indicator = Instance.new("Frame")
+        Indicator.Name = "Indicator"
+        Indicator.Size = UDim2.new(1, 0, 0, 3)
+        Indicator.Position = UDim2.new(0, 0, 1, -3)
+        Indicator.BackgroundColor3 = Color3.fromRGB(0, 255, 255)
+        Indicator.Visible = (i == 1)
+        Indicator.Parent = TabButton
+        
+        TabButton.MouseButton1Click:Connect(function()
+            -- Show selected tab
+            for _, frame in pairs(TabFrames) do
+                frame.Visible = false
+            end
+            TabFrames[tabName].Visible = true
+            
+            -- Update indicators
+            for _, btn in pairs(TabButtons) do
+                btn:FindFirstChild("Indicator").Visible = false
+            end
+            Indicator.Visible = true
+        end)
+        
+        TabButton.Parent = TabContainer
+        TabButtons[tabName] = TabButton
+        
+        -- Tab content frame
+        local TabFrame = Instance.new("ScrollingFrame")
+        TabFrame.Name = tabName .. "Frame"
+        TabFrame.Size = UDim2.new(1, -10, 1, -PlatformUtils.adaptiveScale(120))
+        TabFrame.Position = UDim2.new(0, 5, 0, PlatformUtils.adaptiveScale(110))
+        TabFrame.BackgroundTransparency = 1
+        TabFrame.ScrollBarThickness = 8
+        TabFrame.ScrollBarImageColor3 = Color3.fromRGB(0, 100, 200)
+        TabFrame.Visible = (i == 1)
+        TabFrame.CanvasSize = UDim2.new(0, 0, 0, PlatformUtils.adaptiveScale(800))
+        
+        TabFrames[tabName] = TabFrame
+    end
+    
+    -- Build tab contents
+    self:BuildSecurityAnalysisTab(TabFrames["Security Analysis"])
+    self:BuildNetworkMonitorTab(TabFrames["Network Monitor"])
+    self:BuildMemoryInspectorTab(TabFrames["Memory Inspector"])
+    self:BuildVulnerabilityDBTab(TabFrames["Vulnerability DB"])
+    self:BuildLegalFrameworkTab(TabFrames["Legal Framework"])
+    
+    -- Status bar
+    local StatusBar = Instance.new("Frame")
+    StatusBar.Name = "StatusBar"
+    StatusBar.Size = UDim2.new(1, 0, 0, PlatformUtils.adaptiveScale(30))
+    StatusBar.Position = UDim2.new(0, 0, 1, -PlatformUtils.adaptiveScale(30))
+    StatusBar.BackgroundColor3 = Color3.fromRGB(10, 20, 40)
+    
+    local StatusText = Instance.new("TextLabel")
+    StatusText.Name = "StatusText"
+    StatusText.Size = UDim2.new(1, -10, 1, 0)
+    StatusText.Position = UDim2.new(0, 5, 0, 0)
+    StatusText.BackgroundTransparency = 1
+    StatusText.Text = "Security Research Mode: ACTIVE | Platform: " .. PlatformUtils.detectPlatform()
+    StatusText.TextColor3 = Color3.fromRGB(0, 255, 150)
+    StatusText.TextXAlignment = Enum.TextXAlignment.Left
+    StatusText.Font = Enum.Font.Code
+    
+    -- Close button
+    local CloseButton = Instance.new("TextButton")
+    CloseButton.Name = "CloseButton"
+    CloseButton.Size = UDim2.new(0, PlatformUtils.adaptiveScale(100), 0, PlatformUtils.adaptiveScale(30))
+    CloseButton.Position = UDim2.new(1, -PlatformUtils.adaptiveScale(105), 1, -PlatformUtils.adaptiveScale(35))
+    CloseButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+    CloseButton.Text = "EXIT"
+    CloseButton.TextColor3 = Color3.white
+    CloseButton.Font = Enum.Font.GothamBold
+    
+    CloseButton.MouseButton1Click:Connect(function()
+        ScreenGui:Destroy()
+    end)
+    
+    -- Parent all elements
+    Header.Parent = MainFrame
+    Title.Parent = Header
+    Subtitle.Parent = Header
+    TabContainer.Parent = MainFrame
+    
+    for _, frame in pairs(TabFrames) do
+        frame.Parent = MainFrame
+    end
+    
+    StatusBar.Parent = MainFrame
+    StatusText.Parent = StatusBar
+    CloseButton.Parent = MainFrame
+    
+    MainFrame.Parent = ScreenGui
+    
+    -- Draggable functionality (PC only)
+    if PlatformUtils.detectPlatform() == "PC" then
+        local dragging = false
+        local dragInput, dragStart, startPos
+        
+        MainFrame.InputBegan:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                dragging = true
+                dragStart = input.Position
+                startPos = MainFrame.Position
+                
+                input.Changed:Connect(function()
+                    if input.UserInputState == Enum.UserInputState.End then
+                        dragging = false
+                    end
+                end)
+            end
+        end)
+        
+        MainFrame.InputChanged:Connect(function(input)
+            if input.UserInputType == Enum.UserInputType.MouseMovement then
+                dragInput = input
+            end
+        end)
+        
+        game:GetService("UserInputService").InputChanged:Connect(function(input)
+            if dragging and input == dragInput then
+                local delta = input.Position - dragStart
+                MainFrame.Position = UDim2.new(
+                    startPos.X.Scale, 
+                    startPos.X.Offset + delta.X,
+                    startPos.Y.Scale, 
+                    startPos.Y.Offset + delta.Y
+                )
+            end
+        end)
+    end
+    
+    return ScreenGui
+end
+
+-- TAB 1: SECURITY ANALYSIS
+function DarkForgeGUI:BuildSecurityAnalysisTab(frame)
+    local yOffset = 10
+    
+    -- Game Info Section
+    local GameInfoLabel = self:CreateSectionLabel("GAME SECURITY ANALYSIS", yOffset, frame)
+    yOffset = yOffset + 40
+    
+    -- Simulated game data (theoretical)
+    local simulatedData = {
+        {name = "FilteringEnabled", value = "ENABLED", status = "SECURE"},
+        {name = "RemoteEvent Security", value = "SERVER_VALIDATION", status = "WARNING"},
+        {name = "Client Integrity", value = "NO_CHECK", status = "CRITICAL"},
+        {name = "Data Encryption", value = "NONE", status = "CRITICAL"},
+        {name = "Anti-Exploit", value = "BASIC", status = "WARNING"}
+    }
+    
+    for i, data in ipairs(simulatedData) do
+        local row = self:CreateDataRow(data.name, data.value, data.status, yOffset, frame)
+        yOffset = yOffset + 35
+    end
+    
+    -- Analysis Tools Section
+    yOffset = yOffset + 20
+    local ToolsLabel = self:CreateSectionLabel("SECURITY TOOLS (SIMULATED)", yOffset, frame)
+    yOffset = yOffset + 40
+    
+    -- Security scan button
+    local ScanButton = Instance.new("TextButton")
+    ScanButton.Name = "ScanButton"
+    ScanButton.Size = UDim2.new(0.9, 0, 0, PlatformUtils.adaptiveScale(40))
+    ScanButton.Position = UDim2.new(0.05, 0, 0, yOffset)
+    ScanButton.BackgroundColor3 = Color3.fromRGB(0, 100, 200)
+    ScanButton.Text = "RUN SECURITY SCAN (SIMULATED)"
+    ScanButton.TextColor3 = Color3.white
+    ScanButton.Font = Enum.Font.GothamBold
+    
+    ScanButton.MouseButton1Click:Connect(function()
+        -- Educational simulation only
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Security Scan",
+            Text = "Simulated security analysis complete. No vulnerabilities found in educational environment.",
+            Duration = 5
+        })
+    end)
+    
+    ScanButton.Parent = frame
+    yOffset = yOffset + 50
+    
+    -- Output console
+    local ConsoleLabel = Instance.new("TextLabel")
+    ConsoleLabel.Name = "ConsoleLabel"
+    ConsoleLabel.Size = UDim2.new(0.9, 0, 0, PlatformUtils.adaptiveScale(25))
+    ConsoleLabel.Position = UDim2.new(0.05, 0, 0, yOffset)
+    ConsoleLabel.BackgroundTransparency = 1
+    ConsoleLabel.Text = "SECURITY CONSOLE:"
+    ConsoleLabel.TextColor3 = Color3.fromRGB(0, 255, 255)
+    ConsoleLabel.TextXAlignment = Enum.TextXAlignment.Left
+    ConsoleLabel.Font = Enum.Font.Code
+    
+    yOffset = yOffset + 30
+    
+    local ConsoleFrame = Instance.new("Frame")
+    ConsoleFrame.Name = "ConsoleFrame"
+    ConsoleFrame.Size = UDim2.new(0.9, 0, 0, PlatformUtils.adaptiveScale(150))
+    ConsoleFrame.Position = UDim2.new(0.05, 0, 0, yOffset)
+    ConsoleFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    ConsoleFrame.BorderColor3 = Color3.fromRGB(0, 100, 100)
+    
+    local ConsoleText = Instance.new("TextLabel")
+    ConsoleText.Name = "ConsoleText"
+    ConsoleText.Size = UDim2.new(1, -10, 1, -10)
+    ConsoleText.Position = UDim2.new(0, 5, 0, 5)
+    ConsoleText.BackgroundTransparency = 1
+    ConsoleText.Text = "> Security Research Interface Initialized\n> Platform: " .. PlatformUtils.detectPlatform() .. "\n> Mode: Educational Simulation\n> Ready for security analysis training"
+    ConsoleText.TextColor3 = Color3.fromRGB(0, 255, 0)
+    ConsoleText.TextXAlignment = Enum.TextXAlignment.Left
+    ConsoleText.TextYAlignment = Enum.TextYAlignment.Top
+    ConsoleText.Font = Enum.Font.Code
+    ConsoleText.TextSize = PlatformUtils.adaptiveScale(14)
+    ConsoleText.TextWrapped = true
+    
+    ConsoleText.Parent = ConsoleFrame
+    ConsoleFrame.Parent = frame
+    ConsoleLabel.Parent = frame
+    
+    frame.CanvasSize = UDim2.new(0, 0, 0, yOffset + PlatformUtils.adaptiveScale(200))
+end
+
+-- TAB 2: NETWORK MONITOR
+function DarkForgeGUI:BuildNetworkMonitorTab(frame)
+    local yOffset = 10
+    
+    local NetworkLabel = self:CreateSectionLabel("NETWORK TRAFFIC MONITOR (SIMULATED)", yOffset, frame)
+    yOffset = yOffset + 40
+    
+    -- Network statistics
+    local stats = {
+        {"RemoteEvents/sec", "12", "NORMAL"},
+        {"Data Transfer", "45KB/s", "LOW"},
+        {"Packet Loss", "0%", "OPTIMAL"},
+        {"Latency", "45ms", "GOOD"},
+        {"Security Layer", "TLS 1.2", "SECURE"}
+    }
+    
+    for i, stat in ipairs(stats) do
+        local row = self:CreateDataRow(stat[1], stat[2], stat[3], yOffset, frame)
+        yOffset = yOffset + 35
+    end
+    
+    -- Traffic visualization
+    yOffset = yOffset + 20
+    local TrafficLabel = Instance.new("TextLabel")
+    TrafficLabel.Name = "TrafficLabel"
+    TrafficLabel.Size = UDim2.new(0.9, 0, 0, PlatformUtils.adaptiveScale(25))
+    TrafficLabel.Position = UDim2.new(0.05, 0, 0, yOffset)
+    TrafficLabel.BackgroundTransparency = 1
+    TrafficLabel.Text = "NETWORK TRAFFIC VISUALIZATION:"
+    TrafficLabel.TextColor3 = Color3.fromRGB(0, 255, 255)
+    TrafficLabel.TextXAlignment = Enum.TextXAlignment.Left
+    
+    yOffset = yOffset + 30
+    
+    -- Simulated traffic graph
+    local GraphFrame = Instance.new("Frame")
+    GraphFrame.Name = "GraphFrame"
+    GraphFrame.Size = UDim2.new(0.9, 0, 0, PlatformUtils.adaptiveScale(200))
+    GraphFrame.Position = UDim2.new(0.05, 0, 0, yOffset)
+    GraphFrame.BackgroundColor3 = Color3.fromRGB(10, 20, 30)
+    GraphFrame.BorderColor3 = Color3.fromRGB(0, 100, 150)
+    
+    -- Create simulated graph bars
+    local barCount = 20
+    for i = 1, barCount do
+        local barHeight = math.random(20, 180)
+        local bar = Instance.new("Frame")
+        bar.Name = "Bar_" .. i
+        bar.Size = UDim2.new(0, 15, 0, barHeight)
+        bar.Position = UDim2.new(0, (i-1) * 20, 1, -barHeight)
+        bar.AnchorPoint = Vector2.new(0, 1)
+        bar.BackgroundColor3 = Color3.fromHSV(i/barCount, 0.8, 0.8)
+        bar.BorderSizePixel = 0
+        bar.Parent = GraphFrame
+    end
+    
+    GraphFrame.Parent = frame
+    TrafficLabel.Parent = frame
+    
+    frame.CanvasSize = UDim2.new(0, 0, 0, yOffset + PlatformUtils.adaptiveScale(250))
+end
+
+-- TAB 3: MEMORY INSPECTOR
+function DarkForgeGUI:BuildMemoryInspectorTab(frame)
+    local yOffset = 10
+    
+    local MemoryLabel = self:CreateSectionLabel("MEMORY ANALYSIS (EDUCATIONAL)", yOffset, frame)
+    yOffset = yOffset + 40
+    
+    -- Memory statistics
+    local modules = {
+        {"Game State", "0x7FFA1234", "READ_ONLY"},
+        {"Player Data", "0x7FFA5678", "VALIDATED"},
+        {"UI Elements", "0x7FFA9ABC", "VOLATILE"},
+        {"Network Buffer", "0x7FFADEF0", "ENCRYPTED"},
+        {"Script Heap", "0x7FFA2468", "PROTECTED"}
+    }
+    
+    for i, module in ipairs(modules) do
+        local row = self:CreateDataRow(module[1], module[2], module[3], yOffset, frame)
+        yOffset = yOffset + 35
+    end
+    
+    -- Memory dump simulation
+    yOffset = yOffset + 20
+    local DumpButton = Instance.new("TextButton")
+    DumpButton.Name = "DumpButton"
+    DumpButton.Size = UDim2.new(0.9, 0, 0, PlatformUtils.adaptiveScale(40))
+    DumpButton.Position = UDim2.new(0.05, 0, 0, yOffset)
+    DumpButton.BackgroundColor3 = Color3.fromRGB(100, 0, 200)
+    DumpButton.Text = "SIMULATE MEMORY ANALYSIS"
+    DumpButton.TextColor3 = Color3.white
+    
+    DumpButton.MouseButton1Click:Connect(function()
+        -- Educational memory dump simulation
+        local dumpWindow = Instance.new("ScreenGui")
+        local dumpFrame = Instance.new("Frame")
+        -- ... (simulated memory dump display)
+    end)
+    
+    DumpButton.Parent = frame
+    
+    frame.CanvasSize = UDim2.new(0, 0, 0, yOffset + PlatformUtils.adaptiveScale(100))
+end
+
+-- TAB 4: VULNERABILITY DATABASE
+function DarkForgeGUI:BuildVulnerabilityDBTab(frame)
+    local yOffset = 10
+    
+    local VulnLabel = self:CreateSectionLabel("KNOWN VULNERABILITIES DATABASE", yOffset, frame)
+    yOffset = yOffset + 40
+    
+    -- Educational vulnerability database
+    local vulnerabilities = {
+        {
+            name = "Client-Side Validation",
+            severity = "HIGH",
+            description = "Game logic validated on client",
+            mitigation = "Move to server-side"
+        },
+        {
+            name = "Unencrypted Comms",
+            severity = "MEDIUM",
+            description = "Network traffic not encrypted",
+            mitigation = "Implement TLS/SSL"
+        },
+        {
+            name = "Memory Injection",
+            severity = "CRITICAL",
+            description = "No memory protection",
+            mitigation = "Code signing, ASLR"
+        }
+    }
+    
+    for i, vuln in ipairs(vulnerabilities) do
+        local vulnFrame = Instance.new("Frame")
+        vulnFrame.Name = "Vuln_" .. i
+        vulnFrame.Size = UDim2.new(0.9, 0, 0, PlatformUtils.adaptiveScale(120))
+        vulnFrame.Position = UDim2.new(0.05, 0, 0, yOffset)
+        vulnFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 45)
+        vulnFrame.BorderColor3 = vuln.severity == "CRITICAL" and Color3.fromRGB(255, 50, 50) or
+                                 vuln.severity == "HIGH" and Color3.fromRGB(255, 150, 50) or
+                                 Color3.fromRGB(255, 255, 100)
+        
+        -- Vulnerability title
+        local title = Instance.new("TextLabel")
+        title.Name = "Title"
+        title.Size = UDim2.new(1, 0, 0, PlatformUtils.adaptiveScale(30))
+        title.Position = UDim2.new(0, 5, 0, 5)
+        title.BackgroundTransparency = 1
+        title.Text = vuln.name .. " [" .. vuln.severity .. "]"
+        title.TextColor3 = Color3.white
+        title.TextXAlignment = Enum.TextXAlignment.Left
+        title.Font = Enum.Font.GothamBold
+        
+        -- Description
+        local desc = Instance.new("TextLabel")
+        desc.Name = "Description"
+        desc.Size = UDim2.new(1, -10, 0, PlatformUtils.adaptiveScale(40))
+        desc.Position = UDim2.new(0, 5, 0, PlatformUtils.adaptiveScale(35))
+        desc.BackgroundTransparency = 1
+        desc.Text = vuln.description
+        desc.TextColor3 = Color3.fromRGB(200, 200, 255)
+        desc.TextXAlignment = Enum.TextXAlignment.Left
+        desc.TextWrapped = true
+        
+        -- Mitigation
+        local mitigation = Instance.new("TextLabel")
+        mitigation.Name = "Mitigation"
+        mitigation.Size = UDim2.new(1, -10, 0, PlatformUtils.adaptiveScale(35))
+        mitigation.Position = UDim2.new(0, 5, 0, PlatformUtils.adaptiveScale(75))
+        mitigation.BackgroundTransparency = 1
+        mitigation.Text = "Fix: " .. vuln.mitigation
+        mitigation.TextColor3 = Color3.fromRGB(100, 255, 100)
+        mitigation.TextXAlignment = Enum.TextXAlignment.Left
+        mitigation.TextWrapped = true
+        
+        title.Parent = vulnFrame
+        desc.Parent = vulnFrame
+        mitigation.Parent = vulnFrame
+        vulnFrame.Parent = frame
+        
+        yOffset = yOffset + PlatformUtils.adaptiveScale(130)
+    end
+    
+    frame.CanvasSize = UDim2.new(0, 0, 0, yOffset + 50)
+end
+
+-- TAB 5: LEGAL FRAMEWORK
+function DarkForgeGUI:BuildLegalFrameworkTab(frame)
+    local yOffset = 10
+    
+    local LegalLabel = self:CreateSectionLabel("LEGAL & ETHICAL FRAMEWORK", yOffset, frame)
+    yOffset = yOffset + 40
+    
+    -- Legal information
+    local legalPoints = {
+        "⚠️ ROBLOX TERMS OF SERVICE PROHIBIT:",
+        "• Unauthorized game modification",
+        "• Exploit distribution",
+        "• Account theft",
+        "• Real-world trading",
+        "",
+        "✅ LEGITIMATE ALTERNATIVES:",
+        "• Roblox Studio development",
+        "• Learning Lua programming",
+        "• Ethical hacking certifications",
+        "• Bug bounty programs",
+        "",
+        "📚 LEGAL RESOURCES:",
+        "• Roblox Developer Hub",
+        "• OWASP Security Guidelines",
+        "• CEH Certification",
+        "• HackTheBox (legal)"
+    }
+    
+    for i, point in ipairs(legalPoints) do
+        local pointLabel = Instance.new("TextLabel")
+        pointLabel.Name = "Point_" .. i
+        pointLabel.Size = UDim2.new(0.9, 0, 0, PlatformUtils.adaptiveScale(25))
+        pointLabel.Position = UDim2.new(0.05, 0, 0, yOffset)
+        pointLabel.BackgroundTransparency = 1
+        pointLabel.Text = point
+        
+        if point:find("⚠️") then
+            pointLabel.TextColor3 = Color3.fromRGB(255, 100, 100)
+            pointLabel.Font = Enum.Font.GothamBold
+        elseif point:find("✅") then
+            pointLabel.TextColor3 = Color3.fromRGB(100, 255, 100)
+        elseif point:find("📚") then
+            pointLabel.TextColor3 = Color3.fromRGB(100, 150, 255)
+        else
+            pointLabel.TextColor3 = Color3.fromRGB(200, 200, 255)
+        end
+        
+        pointLabel.TextXAlignment = Enum.TextXAlignment.Left
+        pointLabel.TextWrapped = true
+        
+        pointLabel.Parent = frame
+        yOffset = yOffset + PlatformUtils.adaptiveScale(25)
+    end
+    
+    -- Learning resources buttons
+    yOffset = yOffset + 20
+    
+    local ResourceButtons = {
+        {"Roblox Dev Hub", "https://developer.roblox.com/", Color3.fromRGB(0, 100, 200)},
+        {"Learn Lua", "https://www.lua.org/", Color3.fromRGB(0, 150, 100)},
+        {"HackTheBox", "https://www.hackthebox.com/", Color3.fromRGB(200, 100, 0)},
+        {"TryHackMe", "https://tryhackme.com/", Color3.fromRGB(100, 0, 200)}
+    }
+    
+    for i, resource in ipairs(ResourceButtons) do
+        local button = Instance.new("TextButton")
+        button.Name = "Resource_" .. i
+        button.Size = UDim2.new(0.9, 0, 0, PlatformUtils.adaptiveScale(35))
+        button.Position = UDim2.new(0.05, 0, 0, yOffset)
+        button.BackgroundColor3 = resource[3]
+        button.Text = resource[1]
+        button.TextColor3 = Color3.white
+        
+        button.MouseButton1Click:Connect(function()
+            -- In Roblox, we can't open external URLs directly
+            -- This is just for simulation
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Educational Resource",
+                Text = "Visit: " .. resource[2] .. " in your browser",
+                Duration = 5
+            })
+        end)
+        
+        button.Parent = frame
+        yOffset = yOffset + PlatformUtils.adaptiveScale(40)
+    end
+    
+    frame.CanvasSize = UDim2.new(0, 0, 0, yOffset + 50)
+end
+
+-- HELPER FUNCTIONS
+function DarkForgeGUI:CreateSectionLabel(text, yOffset, parent)
+    local label = Instance.new("TextLabel")
+    label.Name = text .. "Label"
+    label.Size = UDim2.new(0.9, 0, 0, PlatformUtils.adaptiveScale(30))
+    label.Position = UDim2.new(0.05, 0, 0, yOffset)
+    label.BackgroundTransparency = 1
+    label.Text = text
+    label.TextColor3 = Color3.fromRGB(0, 255, 255)
+    label.TextScaled = true
+    label.Font = Enum.Font.GothamBold
+    
+    label.Parent = parent
+    return label
+end
+
+function DarkForgeGUI:CreateDataRow(name, value, status, yOffset, parent)
+    local row = Instance.new("Frame")
+    row.Name = name .. "Row"
+    row.Size = UDim2.new(0.9, 0, 0, PlatformUtils.adaptiveScale(30))
+    row.Position = UDim2.new(0.05, 0, 0, yOffset)
+    row.BackgroundTransparency = 1
+    
+    local nameLabel = Instance.new("TextLabel")
+    nameLabel.Name = "Name"
+    nameLabel.Size = UDim2.new(0.4, 0, 1, 0)
+    nameLabel.Position = UDim2.new(0, 0, 0, 0)
+    nameLabel.BackgroundTransparency = 1
+    nameLabel.Text = name
+    nameLabel.TextColor3 = Color3.fromRGB(200, 200, 255)
+    nameLabel.TextXAlignment = Enum.TextXAlignment.Left
+    
+    local valueLabel = Instance.new("TextLabel")
+    valueLabel.Name = "Value"
+    valueLabel.Size = UDim2.new(0.3, 0, 1, 0)
+    valueLabel.Position = UDim2.new(0.4, 0, 0, 0)
+    valueLabel.BackgroundTransparency = 1
+    valueLabel.Text = value
+    valueLabel.TextColor3 = Color3.fromRGB(255, 255, 200)
+    
+    local statusLabel = Instance.new("TextLabel")
+    statusLabel.Name = "Status"
+    statusLabel.Size = UDim2.new(0.3, 0, 1, 0)
+    statusLabel.Position = UDim2.new(0.7, 0, 0, 0)
+    statusLabel.BackgroundTransparency = 1
+    statusLabel.Text = status
+    
+    if status == "SECURE" or status == "OPTIMAL" or status == "GOOD" then
+        statusLabel.TextColor3 = Color3.fromRGB(100, 255, 100)
+    elseif status == "WARNING" or status == "NORMAL" then
+        statusLabel.TextColor3 = Color3.fromRGB(255, 255, 100)
+    else
+        statusLabel.TextColor3 = Color3.fromRGB(255, 100, 100)
+    end
+    
+    nameLabel.Parent = row
+    valueLabel.Parent = row
+    statusLabel.Parent = row
+    row.Parent = parent
+    
+    return row
+end
+
+-- EXECUTOR COMPATIBILITY LAYER
+local ExecutorCompatibility = {
+    _EDUCATIONAL_ONLY = true,
+    
+    -- Theoretical executor analysis (for educational purposes)
+    analyzeExecutors = function()
+        return {
+            {
+                name = "ScriptWare",
+                platform = {"PC", "Mac"},
+                detection = "HIGH",
+                risk = "ACCOUNT_TERMINATION"
+            },
+            {
+                name = "Synapse X",
+                platform = {"PC"},
+                detection = "VERY_HIGH",
+                risk = "PERMANENT_BAN"
+            },
+            {
+                name = "KRNL",
+                platform = {"PC"},
+                detection = "MEDIUM",
+                risk = "ACCOUNT_BAN"
+            },
+            {
+                name = "Arceus X",
+                platform = {"Mobile"},
+                detection = "HIGH",
+                risk = "DEVICE_BAN"
+            },
+            {
+                name = "Hydrogen",
+                platform = {"Android"},
+                detection = "MEDIUM",
+                risk = "ACCOUNT_BAN"
+            }
+        }
+    end,
+    
+    -- Safe, educational detection simulation
+    simulateExecutorDetection = function()
+        local detectionMethods = {
+            "Signature scanning",
+            "Behavior analysis",
+            "Memory integrity checks",
+            "Network traffic monitoring",
+            "Script validation"
+        }
+        
+        local report = "EXECUTOR DETECTION SIMULATION (EDUCATIONAL):\n\n"
+        report = report .. "Roblox employs multiple detection methods:\n"
+        
+        for _, method in ipairs(detectionMethods) do
+            report = report .. "• " .. method .. "\n"
+        end
+        
+        report = report .. "\nCONSEQUENCES OF DETECTION:\n"
+        report = report .. "1. Immediate account termination\n"
+        report = report .. "2. IP address blacklisting\n"
+        report = report .. "3. Hardware ID banning (PC/Mobile)\n"
+        report = report .. "4. Legal action for severe cases\n"
+        
+        return report
+    end
+}
+
+-- MAIN EXECUTION WITH CROSS-PLATFORM SUPPORT
+local function InitializeSecurityEducationGUI()
+    -- Safety check - only run in testing environments
+    if not game:GetService("RunService"):IsStudio() then
+        warn("DarkForge-X Security GUI: Intended for Roblox Studio testing only")
+        return nil
+    end
+    
+    -- Create GUI
+    local gui = DarkForgeGUI:CreateEducationalInterface(game.Players.LocalPlayer:WaitForChild("PlayerGui"))
+    
+    -- Add executor information (educational)
+    local executorInfo = ExecutorCompatibility.analyzeExecutors()
+    local detectionReport = ExecutorCompatibility.simulateExecutorDetection()
+    
+    -- Log educational information
+    print("=== DARKFORGE-X SECURITY EDUCATION PLATFORM ===")
+    print("Platform: " .. PlatformUtils.detectPlatform())
+    print("Mode: Educational Security Research")
+    print("\nEXECUTOR ANALYSIS (THEORETICAL):")
+    
+    for _, executor in ipairs(executorInfo) do
+        print(string.format("%-15s | Platform: %-10s | Risk: %s", 
+            executor.name, 
+            table.concat(executor.platform, "/"),
+            executor.risk))
+    end
+    
+    print("\n" .. detectionReport)
+    
+    -- Return GUI and analysis data
+    return {
+        GUI = gui,
+        Platform = PlatformUtils.detectPlatform(),
+        Executor
